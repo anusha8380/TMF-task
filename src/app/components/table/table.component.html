@@ -20,6 +20,12 @@
 
 
 <div class="mat-elevation-z8">
+  <app-scroll-container [more]="hasMore()"
+                      [scrollOffset]="2500"
+                      [scrollDelay]="3000"
+                      (scrolled)="handleScroll($event)"
+                      [class.full]="full"
+                      [class.part]="!full">
   <table mat-table [dataSource]="dataSource" matSort class="mat-table">
 
     <!-- Client Name Column -->
@@ -87,8 +93,9 @@
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr>
   </table>
-  <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
-  </mat-paginator>
+  </app-scroll-container>
+  <!-- <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator> -->
 </div>
 
 <mat-menu #menu="matMenu">
